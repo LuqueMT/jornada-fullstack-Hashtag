@@ -3,6 +3,7 @@ import cors from "cors";
 import { db } from "./connect.js";
 import path from "path";
 
+
 const __dirname = path.resolve();
 const app = express();
 const PORT = 3001;
@@ -20,7 +21,7 @@ app.get("/api/artists", async (request, response) => {
 app.get("/api/songs", async (request, response) => {
   response.send(await db.collection("songs").find({}).toArray());
 });
-app.use(express.static(path.join(__dirname,"../../dist")));
+app.use(express.static(path.join(__dirname,"../dist")));
 
 app.get("*", async (request,response) =>{
   response.sendFile(path.join(__dirname,"../dist/index.html"));
