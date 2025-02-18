@@ -2,7 +2,11 @@ import express from "express";
 import cors from "cors";
 import { db } from "./connect.js";
 import path from "path";
-
+import process from "process";
+if (typeof global === 'undefined'){
+  var global = window;
+}
+global.process = process;
 
 const __dirname = path.resolve();
 const app = express();
